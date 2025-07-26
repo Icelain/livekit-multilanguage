@@ -3,7 +3,7 @@ For livekit dependencies, run:
 uv pip install \
               "livekit-agents[openai,sarvam,elevenlabs,silero,turn-detector]~=1.0" \
               "livekit-plugins-noise-cancellation~=0.2" \
-              "python-dotenv"```
+              "python-dotenv"
 ```
 ```bash
 python main.py download-files
