@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from livekit import agents, rtc
-from livekit.agents import AgentSession, Agent, ModelSettings, RoomInputOptions, stt
+from livekit.agents import AgentSession, Agent, ModelSettings, RoomInputOptions, stt, mcp
 from typing import AsyncIterable, Optional
 from langdetect import detect
 from livekit.plugins import (
@@ -46,6 +46,7 @@ async def entrypoint(ctx: agents.JobContext):
         tts=elevenlabs.TTS(voice_id="2zRM7PkgwBPiau2jvVXc", model="eleven_flash_v2_5"),
         vad=silero.VAD.load(),
         turn_detection=MultilingualModel(),
+        mcp_servers=[mcp.MCPServerHTTP("https://playwrightmcp.ice.computer/mcp", timeout=10, client_session_timeout_seconds=10)]
     )
     await session.start(
         room=ctx.room,
