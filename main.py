@@ -33,9 +33,12 @@ class Assistant(Agent):
         async for event in Agent.default.stt_node(self, filtered_audio(), model_settings):
             if len(event.alternatives) > 0:
                 textcache = event.alternatives[0].text
-                self.curlang = detect(textcache)
 
-                event.alternatives[0].text = event.alternatives[0].text + f". Respond in this language: {self.curlang}"
+                try:
+                    self.curlang = detect(textcache)
+                except:
+                    continue
+                event.alternatives[0].text = event.alternatives[0].text + f". PROMPT CONTEXT: SPRINKLE DISFLUENCIES IN YOUR SPEECH OCCASIONALLY IF THE TEXT IS LONG AND RESPOND IN THIS LANGUAGE IF THE PRECEDING TEXT IS LONGER THAN 4 WORDS ELSE FIGURE IT OUT: {self.curlang}"
                                                 
             yield event
 
