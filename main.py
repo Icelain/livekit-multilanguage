@@ -16,7 +16,7 @@ load_dotenv()
 
 class Assistant(Agent):
     def __init__(self) -> None:
-        super().__init__(instructions="You are a helpful voice AI assistant.")
+        super().__init__(instructions="You are a helpful voice AI assistant. PROMPT CONTEXT: SPRINKLE DISFLUENCIES IN YOUR SPEECH OCCASIONALLY IF THE TEXT IS LONG")
 
         self.curlang = "en"
 
@@ -38,7 +38,7 @@ class Assistant(Agent):
                     self.curlang = detect(textcache)
                 except:
                     continue
-                event.alternatives[0].text = event.alternatives[0].text + f". PROMPT CONTEXT: SPRINKLE DISFLUENCIES IN YOUR SPEECH OCCASIONALLY IF THE TEXT IS LONG AND RESPOND IN THIS LANGUAGE IF THE PRECEDING TEXT IS LONGER THAN 4 WORDS ELSE FIGURE IT OUT: {self.curlang}"
+                event.alternatives[0].text = event.alternatives[0].text + f". RESPOND IN THIS LANGUAGE IF THE PRECEDING TEXT IS LONGER THAN 4 WORDS ELSE FIGURE IT OUT: {self.curlang}"
                                                 
             yield event
 
