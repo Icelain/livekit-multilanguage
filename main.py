@@ -16,7 +16,7 @@ load_dotenv()
 
 class Assistant(Agent):
     def __init__(self) -> None:
-        super().__init__(instructions="You are a helpful voice AI assistant. PROMPT CONTEXT: SPRINKLE DISFLUENCIES IN YOUR SPEECH OCCASIONALLY IF THE TEXT IS LONG")
+        super().__init__(instructions="You are a helpful voice AI assistant. USE THE PROVIDED MCP SERVER TO QUERY INFORMATION ABOUT CURRENT EVENTS, INCLUDING THE DATE. DO NOT RELY ON YOUR SYSTEM DATE, IT IS OUTDATED. PROMPT CONTEXT: SPRINKLE DISFLUENCIES IN YOUR SPEECH OCCASIONALLY IF THE TEXT IS LONG")
 
         self.curlang = "en"
 
